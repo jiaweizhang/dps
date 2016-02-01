@@ -51,10 +51,6 @@ myApp.controller('organizationsController', ['$scope', '$http', function ($scope
         return false;
     };
 
-    $scope.run = function() {
-        console.log(JSON.stringify($scope.check));
-    };
-
     $scope.noFilters = function() {
         for (var i = 0; i < $scope.organizationTags.length; i++) {
             if ($scope.check[$scope.organizationTags[i]]) {
