@@ -18,6 +18,21 @@ myApp.config(function ($routeProvider) {
             controller: 'organizationsController'
         })
 
+        .when('/about',{
+            templateUrl: 'pages/about.html',
+            controller: 'aboutController'
+        })
+
+        .when('/contact',{
+            templateUrl: 'pages/contact.html',
+            controller: 'contactController'
+        })
+
+        .when('/opportunities', {
+            templateUrl: 'pages/opportunities.html',
+            controller: 'opportunitiesController'
+        })
+
         .otherwise({
             redirectTo: "/"
         });
@@ -79,6 +94,33 @@ myApp.controller('organizationsController', ['$scope', '$http', function ($scope
             }
         }, function errorCallback(response) {
         });
+
+    };
+
+    $scope.init();
+}]);
+
+myApp.controller('aboutController', ['$scope', '$http', function ($scope, $http){
+
+    $scope.init = function () {
+
+    };
+
+    $scope.init();
+}]);
+
+myApp.controller('opportunitiesController', ['$scope', '$http', function ($scope, $http){
+
+    $scope.init = function () {
+
+    };
+
+    $scope.init();
+}]);
+
+myApp.controller('contactController', ['$scope', '$http', function ($scope, $http){
+
+    $scope.init = function () {
 
     };
 
