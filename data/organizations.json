@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "name": "organization",
+      "description": "description here",
+      "link": "http://duke.edu",
+      "email": "email@example.com",
+      "tags": [
+        "tag1",
+        "tag2"
+      ]
+    },
+    {
+      "name": "another organization",
+      "description": "another description here",
+      "link": "http://duke.edu",
+      "email": "email@example.com",
+      "tags": [
+        "tag1"
+      ]
+    },
+    {
+      "name": "some other random organization",
+      "description": "no description here",
+      "link": "http://duke.edu",
+      "email": "email@example.com",
+      "tags": []
+    }
+  ]
+}
