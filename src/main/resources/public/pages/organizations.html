@@ -22,6 +22,7 @@
             <p>{{x.description}}</p>
             <p><a target="_blank" ng-href="{{x.link}}">Website</a></p>
             <p>Email: {{x.email}}</p>
+            <p>Tags: <span ng-repeat="tag in x.tags"><span> [{{tag}}] </span></span></p>
             <hr>
         </div>
     </div>
