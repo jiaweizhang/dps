@@ -110,19 +110,29 @@ myApp.controller('aboutController', ['httpService', '$scope', function (httpServ
     $scope.init();
 }]);
 
-myApp.controller('opportunitiesController', ['$scope', function ($scope){
+myApp.controller('opportunitiesController', ['httpService', '$scope', function (httpService, $scope){
+
+    $scope.opportunities = [];
 
     $scope.init = function () {
+        httpService.getOpportunities().then(function (response) {
+            $scope.opportunities = response.data.data;
 
+        });
     };
 
     $scope.init();
 }]);
 
-myApp.controller('contactController', ['$scope', function ($scope){
+myApp.controller('contactController', ['httpService', '$scope', function (httpService, $scope){
+
+    $scope.contacts = [];
 
     $scope.init = function () {
+        httpService.getContacts().then(function (response) {
+            $scope.contacts = response.data.data;
 
+        });
     };
 
     $scope.init();
@@ -150,6 +160,22 @@ myApp.service('httpService', function ($http, $window, $cookies) {
         getMembers: function () {
             return $http({
                 url: "data/team.json",
+                method: "GET"
+            }).success(function (data, status) {
+                return data;
+            });
+        },
+        getContacts: function () {
+            return $http({
+                url: "data/contacts.json",
+                method: "GET"
+            }).success(function (data, status) {
+                return data;
+            });
+        },
+        getOpportunities: function () {
+            return $http({
+                url: "data/opportunities.json",
                 method: "GET"
             }).success(function (data, status) {
                 return data;

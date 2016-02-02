@@ -5,6 +5,15 @@
     <title>Opportunities</title>
 </head>
 <body>
-<p>Some opportunities here</p>
+<h1>Future Opportunities</h1>
+<hr>
+<div ng-repeat="x in opportunities">
+    <div>
+        <h3>{{x.name}}</h3>
+        <p><b>Due: {{x.date}}</b></p>
+        <p>{{x.description}}</p>
+    </div>
+    <hr>
+</div>
 </body>
 </html>

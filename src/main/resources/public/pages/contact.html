@@ -5,6 +5,22 @@
     <title>Contact Us</title>
 </head>
 <body>
-<p>Contact us here</p>
+<h2>Contact Us</h2>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Purpose</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="x in contacts">
+        <td>{{x.purpose}}</td>
+        <td>{{x.name}}</td>
+        <td><a ng-href="mailto:{{x.email}}">{{x.email}}</a></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

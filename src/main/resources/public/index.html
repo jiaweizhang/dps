@@ -40,7 +40,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#about"><i class="fa fa-shield"></i> About Us</a></li>
-                <li><a href="#contact"><i class="fa fa-email"></i> Contact Us</a></li>
+                <li><a href="#contact"><i class="fa fa-envelope"></i> Contact Us</a></li>
+                <!--
                 <li class="dropdown"><a href="" class="dropdown-toggle"
                                         data-toggle="dropdown" data-hover="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false"><i
@@ -49,12 +50,20 @@
                         <li><a href="#">Placeholder</a></li>
                     </ul>
                 </li>
+                -->
             </ul>
         </div>
     </div>
 </nav>
 <div class="jumbotron container">
-    <h1>Duke Partnership for Service</h1>
+    <div class="row">
+        <div class="col-sm-9">
+            <h1>Duke Partnership for Service</h1>
+        </div>
+        <div class="col-sm-3">
+            <img width="100%" src="img/dps-logo.jpg">
+        </div>
+    </div>
 </div>
 <div id="main" class="container">
     <div ng-view></div>
