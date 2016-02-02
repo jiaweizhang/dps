@@ -42,11 +42,11 @@ myApp.controller('mainController', ['httpService', '$scope', '$http', '$window',
 
 }]);
 
-myApp.controller('homeController', function ($scope, $http) {
+myApp.controller('homeController', ['$scope', function ($scope) {
 
-});
+}]);
 
-myApp.controller('organizationsController', ['$scope', '$http', function ($scope, $http){
+myApp.controller('organizationsController', ['httpService', '$scope', function (httpService, $scope){
 
     $scope.check = {};
     $scope.organizations = [];
@@ -76,23 +76,18 @@ myApp.controller('organizationsController', ['$scope', '$http', function ($scope
     };
 
     $scope.init = function () {
-        $http({
-            method: 'GET',
-            url: 'data/organizations.json'
-        }).then(function successCallback(response) {
+        httpService.getOrganizations().then(function (response) {
             $scope.organizations = response.data.data;
-        }, function errorCallback(response) {
+
         });
 
-        $http({
-            method: 'GET',
-            url: 'data/organizationtags.json'
-        }).then(function successCallback(response) {
+
+        httpService.getTags().then(function (response) {
             $scope.organizationTags = response.data.data;
             for (var i = 0; i < $scope.organizationTags.length; i++) {
                 $scope.check[$scope.organizationTags[i]] = false;
             }
-        }, function errorCallback(response) {
+
         });
 
     };
@@ -100,7 +95,22 @@ myApp.controller('organizationsController', ['$scope', '$http', function ($scope
     $scope.init();
 }]);
 
-myApp.controller('aboutController', ['$scope', '$http', function ($scope, $http){
+myApp.controller('aboutController', ['httpService', '$scope', function (httpService, $scope){
+    $scope.people = [];
+
+    $scope.init = function () {
+
+        httpService.getMembers().then(function (response) {
+         $scope.people = response.data.data;
+
+         });
+
+    };
+
+    $scope.init();
+}]);
+
+myApp.controller('opportunitiesController', ['$scope', function ($scope){
 
     $scope.init = function () {
 
@@ -109,16 +119,7 @@ myApp.controller('aboutController', ['$scope', '$http', function ($scope, $http)
     $scope.init();
 }]);
 
-myApp.controller('opportunitiesController', ['$scope', '$http', function ($scope, $http){
-
-    $scope.init = function () {
-
-    };
-
-    $scope.init();
-}]);
-
-myApp.controller('contactController', ['$scope', '$http', function ($scope, $http){
+myApp.controller('contactController', ['$scope', function ($scope){
 
     $scope.init = function () {
 
@@ -132,19 +133,25 @@ myApp.service('httpService', function ($http, $window, $cookies) {
     return {
         getOrganizations: function () {
             return $http({
-                url: "/data/organizations.json",
+                url: "data/organizations.json",
                 method: "GET"
             }).success(function (data, status) {
-                console.log(data);
                 return data;
             });
         },
         getTags: function () {
             return $http({
-                url: "/data/organizationtags.json",
+                url: "data/organizationtags.json",
                 method: "GET"
             }).success(function (data, status) {
-                console.log(data);
+                return data;
+            });
+        },
+        getMembers: function () {
+            return $http({
+                url: "data/team.json",
+                method: "GET"
+            }).success(function (data, status) {
                 return data;
             });
         }
